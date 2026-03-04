@@ -1,0 +1,312 @@
+@import "tailwindcss";
+
+/* ===== LUXURY DESIGN TOKENS ===== */
+@theme inline {
+  /* Gold Palette */
+  --color-gold-50: #FFF9E6;
+  --color-gold-100: #FFF0BF;
+  --color-gold-200: #FFE699;
+  --color-gold-300: #FFD966;
+  --color-gold-400: #FFCC33;
+  --color-gold-500: #D4AF37;
+  --color-gold-600: #B8960F;
+  --color-gold-700: #8B7311;
+  --color-gold-800: #5E4E0E;
+  --color-gold-900: #312809;
+
+  /* Luxury Dark Palette */
+  --color-luxury-black: #0A0A0A;
+  --color-luxury-dark: #111111;
+  --color-luxury-charcoal: #1A1A1A;
+  --color-luxury-graphite: #222222;
+  --color-luxury-slate: #2A2A2A;
+
+  /* Luxury Light Palette */
+  --color-luxury-cream: #FAF3E0;
+  --color-luxury-ivory: #F5F0E8;
+  --color-luxury-pearl: #EDE6D6;
+  --color-luxury-linen: #E8E0D0;
+
+  /* Typography */
+  --font-heading: "Cormorant Garamond", "Georgia", serif;
+  --font-body: "Inter", "Helvetica", sans-serif;
+
+  /* Spacing */
+  --spacing-section: 120px;
+  --spacing-section-mobile: 80px;
+}
+
+/* ===== BASE STYLES ===== */
+:root {
+  --background: #0A0A0A;
+  --foreground: #FAF3E0;
+  --gold: #D4AF37;
+  --gold-light: #FFD966;
+  --gold-dark: #8B7311;
+  --shine-gradient: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(212, 175, 55, 0.15) 45%,
+    rgba(212, 175, 55, 0.3) 50%,
+    rgba(212, 175, 55, 0.15) 55%,
+    transparent 70%
+  );
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ===== CUSTOM SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold-dark);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+/* ===== SELECTION ===== */
+::selection {
+  background: rgba(212, 175, 55, 0.3);
+  color: var(--foreground);
+}
+
+/* ===== UTILITY CLASSES ===== */
+
+/* Gold gradient text */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #D4AF37, #FFD966, #D4AF37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(212, 175, 55, 0.1) 25%,
+    rgba(212, 175, 55, 0.3) 50%,
+    rgba(212, 175, 55, 0.1) 75%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(26, 26, 26, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+/* Gold glow */
+.glow-gold {
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.15),
+              0 0 60px rgba(212, 175, 55, 0.05);
+}
+
+/* Shine overlay for jewellery */
+.shine-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--shine-gradient);
+  pointer-events: none;
+  transform: translateX(-100%);
+}
+
+/* Section padding */
+.section-padding {
+  padding-top: var(--spacing-section);
+  padding-bottom: var(--spacing-section);
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding-top: var(--spacing-section-mobile);
+    padding-bottom: var(--spacing-section-mobile);
+  }
+}
+
+/* Container */
+.luxury-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (min-width: 768px) {
+  .luxury-container {
+    padding: 0 48px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .luxury-container {
+    padding: 0 80px;
+  }
+}
+
+/* ===== HEADING STYLES ===== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+
+/* ===== BUTTON BASE ===== */
+.btn-luxury {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 40px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.4s ease;
+}
+
+.btn-luxury::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gold);
+  transform: translateX(-101%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-luxury:hover {
+  color: var(--background);
+}
+
+.btn-luxury:hover::before {
+  transform: translateX(0);
+}
+
+.btn-luxury span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Filled variant */
+.btn-luxury-filled {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 40px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background: var(--gold);
+  color: var(--background);
+  border: 1px solid var(--gold);
+  transition: color 0.4s ease, background 0.4s ease;
+}
+
+.btn-luxury-filled::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gold-light);
+  transform: translateX(-101%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-luxury-filled:hover::before {
+  transform: translateX(0);
+}
+
+.btn-luxury-filled:hover {
+  color: var(--background);
+}
+
+.btn-luxury-filled span {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== DIVIDER ===== */
+.luxury-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto;
+}
