@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -93,21 +94,14 @@ export default function StorySection() {
                             {/* Gradient overlay for premium look */}
                             <div className="absolute inset-0 bg-gradient-to-t from-luxury-black/40 to-transparent z-10" />
 
-                            {/* Decorative content */}
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <div className="text-center">
-                                    <div className="w-32 h-32 rounded-full border border-gold-500/10 mx-auto flex items-center justify-center mb-4">
-                                        <div className="w-20 h-20 rounded-full border border-gold-500/5 flex items-center justify-center">
-                                            <span
-                                                className="text-4xl text-gold-500/20"
-                                                style={{ fontFamily: "var(--font-heading)" }}
-                                            >
-                                                K
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {/* Actual Image */}
+                            <Image
+                                src="/images/categories/necklaces.png"
+                                alt="Kivyaa Jewels craftsmanship"
+                                fill
+                                className="object-cover"
+                                sizes="(max-width: 1024px) 100vw, 50vw"
+                            />
 
                             {/* Gold border accent */}
                             <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-gold-500/30 to-transparent" />
